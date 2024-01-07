@@ -1,0 +1,87 @@
+/*MEDIA QUERY*/
+@media (max-width:750px) {
+    .row{
+        flex-direction:column;
+    }
+    .about-text p{
+        font-size:12px;
+        
+    }
+    .nav-links ul li:hover::after
+      {
+          left:20px;
+          padding-left: 20px;
+         width:55%;
+      }
+    
+    .nav-links ul li{
+        display:block;
+        padding:12px;
+    }
+    .nav-links{
+        position:absolute;
+        top:0;
+        right:0;
+        background:#3a5968;
+        height:100vh;
+        width: 200px;
+        text-align:left;
+        z-index:2;
+        transition:.4s;
+    }
+    nav .fa{
+       display:block;
+       margin:10px;
+       color:#000;
+       font-size: 22px;
+       cursor:pointer;
+    }
+    .nav-links ul{
+        padding: 3px;
+}
+.continer button{
+    position:relative;
+    display:block;
+    margin: 10px;
+    background:none;
+    font-size:10px; 
+    cursor:pointer;  
+    transition:0.4s; 
+    border:3px  solid rgba(121, 34, 34, 0.6); 
+}
+.continer button:hover{
+    border:none;
+    color:#fff;
+    background-color:rgba(121, 34, 34, 0.6); 
+    border-radius:10px;
+} 
+.menu .menu-sec .card img{
+   width:100px;
+    padding:0 10px;
+} 
+.menu .icon-left{
+    left:-19px;
+}
+.about-img img{
+    width:400px;
+}
+.form-contact{
+    margin-top:-10px;
+}
+textarea{
+    width:400px;
+}
+.form-contact input{
+    width:300px;
+}
+.book{ 
+    margin-left:100px;  
+}
+.menu-content .continer{
+    margin-right:auto;
+}
+.cart{
+    width:450px;
+}
+
+}

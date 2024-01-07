@@ -1,0 +1,570 @@
+:root{
+--green:#FF3B3F;
+  --black:#192a56;
+  --light-color:rgb(15, 11, 11);
+  --box-shadow:10 .5rem 1.5rem rgba(0,0,0,.1);
+}
+
+* {
+  text-decoration: none;
+  outline: none; border:none;  
+  margin:0; padding:0;
+  font-family: 'Nunito', sans-serif;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 5.5rem;
+  scroll-behavior: smooth;
+}
+body{        
+padding-top: 100px;
+padding-bottom: 40px;
+}
+nav {
+position: fixed;
+top:0; left: 0; right:0;
+background: rgb(177, 109, 109);
+padding:1rem 7%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+z-index: 1000;
+box-shadow: 5px 5px 5px rgb(221, 220, 220);
+font-size: 1.7rem;
+}
+.navbar a{
+font-size: 1.7rem;
+border-radius: .5rem;
+padding:.5rem 1.5rem;
+color:var(--light-color);
+text-decoration: none;
+}
+.navbar a.active
+{
+color:#fff;
+background: var(--green);
+}
+.icons i
+{
+cursor: pointer;
+margin-left: .5rem;
+height:4.5rem;
+line-height: 4.5rem;
+width:4.5rem;
+text-align: center;
+font-size: 1.7rem;
+color:var(--black);
+border-radius: 50%;
+background: #eee;
+}
+.icons i:hover{
+color:#fff;
+background: var(--green);
+transform: rotate(360deg);
+}
+.nav-links {
+
+display: flex;
+list-style: none;
+width: 50%;
+height: 100%;
+align-items: center;
+
+
+}
+.nav-links li a:hover{
+  color:#fff;
+background: var(--green);
+}
+
+.nav-links li a {
+text-decoration: none;
+font-size: 16px;
+border-radius: .5rem;
+padding:.5rem 1.5rem;
+color:var(--light-color);
+text-decoration: none;
+}
+.heading{
+text-align: center;
+font-size: 4rem;
+color:rgb(121, 110, 110);
+padding:1rem;
+margin:2rem 0;
+background:rgba(230, 185, 167, 0.568);
+}
+.navbar .search-form{
+  position: absolute;
+  top: 110px; right:-110%;
+  width: 50rem;
+  height: 4.5rem;
+  background: #fff;
+  border-radius:.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+}
+.navbar .search-form input{
+  height:100%;
+  width: 100%;
+  background: none;
+  text-transform: none;
+  font-size: 1.6rem;
+  color: var(--black);
+  padding: 0 1.5rem;
+}
+.navbar .search-form label{
+  font-size:2.2rem ;
+  padding-right: 1.5rem;
+  color:var(--black);
+  cursor: pointer;
+}
+.navbar .search-form label:hover{
+  color:#FF3B3F;
+}
+.navbar .search-form.active{
+   right:2rem;
+   transition:.4s linear;
+}
+
+.footer{
+  background-color: rgb(177, 109, 109);
+ }
+ #copyri{
+  background-color: rgb(122, 61, 61);
+ }
+ 
+ .subs{
+   display:flex;
+   height:35px;
+ }
+ .subs #footsubs2{
+  height:20px;
+  width:100px;
+  margin-left:5px;
+   margin-top: -8px;
+   padding-bottom: 30px;
+   border-radius:15px;
+ }
+.footer .box-container{
+  margin-left: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap:1.5rem;
+}
+
+.footer .box-container .box h3{
+  padding:.5rem 0;
+  font-size: 2.5rem;
+  color:var(--black);
+}
+
+.footer .box-container .box a{
+  display: block;
+  padding:.5rem 0;
+  font-size: 1.5rem;
+  color:var(--light-color);
+}
+
+.footer .box-container .box a:hover{
+  color:var(--green);
+  text-decoration: underline;
+}
+
+.footer .credit{
+  text-align: center;
+  border-top: .1rem solid rgba(0,0,0,.1);
+  font-size: 2rem;
+  color:var(--black);
+  padding:.5rem;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.footer .credit span{
+  color:var(--green);
+}
+.footer #social{
+  margin-top: 40px;
+  display:flex;
+}
+img{ 
+margin-top: 10px;
+}
+a{
+text-decoration: none;
+}
+.mainsbanner {
+height:500px;
+overflow: hidden;
+position: relative;
+background: url(../images/utility.jpg) no-repeat center;
+background-size: cover;
+
+}
+.contbanner{
+position: absolute;
+top: 30%;
+left: 30%;
+transform: translate(-50px,-50px);
+text-align: center;
+font-weight: 700;
+text-transform: uppercase;
+
+}
+
+.first-txt {
+margin: 20px;
+display: block;
+font-size: 50px;
+}
+
+.second-txt {
+margin: 20px;
+display: block;
+font-size: 50px;
+}
+
+
+.MAIN{
+display:grid;
+grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+grid-column-gap: 30px;
+grid-row-gap: 20px;
+background: rgb(247, 237, 237);
+font-size: 1.7rem;
+font-family: arial;
+}
+
+
+.First:hover img { 
+transform: scale(1.02); 
+}
+
+.First{
+max-width: 300px;
+margin: 50px;
+text-align: center;
+font-family: arial;
+background: rgb(255, 253, 253);
+border-radius: 3px;
+width:300px;
+height: 600px;
+position: relative;
+}
+.First button {
+border: none;
+outline: 0;
+padding: 2px;
+color: white;
+background-color:#FF3B3F;
+text-align: center;
+cursor: pointer;
+width: 50%;
+font-size: 15px;
+border-radius: 12px;
+}
+.First button:hover {
+opacity: 0.7;  
+}
+.First:hover{
+box-shadow: 2px 6px 5px #888888;
+}
+.secound{
+max-width: 300px;
+margin: 50px;
+text-align: center;
+font-family: arial;
+background: rgb(255, 253, 253);
+border-radius: 3px;
+width:300px;
+height: 600px;
+position: relative;  
+}
+.secound:hover{
+box-shadow: 2px 6px 5px #888888;
+}
+.secound:hover img { 
+transform: scale(1.02); 
+}
+.secound button {
+border: none;
+outline: 0;
+padding: 2px;
+color: white;
+background-color:#FF3B3F;
+text-align: center;
+cursor: pointer;
+width: 50%;
+font-size: 15px;
+border-radius: 12px;
+}
+.secound button:hover {
+opacity: 0.7;
+}
+.third{
+max-width: 300px;
+margin: 50px;
+text-align: center;
+font-family: arial;
+background: rgb(255, 253, 253);
+border-radius: 3px;
+width:300px;
+height: 600px;
+position: relative;
+}
+.third:hover img { 
+transform: scale(1.02); 
+}
+.third:hover{
+box-shadow: 2px 6px 5px #888888;
+}
+.third button {
+border: none;
+outline: 0;
+padding: 2px;
+color: white;
+background-color:#FF3B3F;
+text-align: center;
+cursor: pointer;
+width: 50%;
+font-size: 15px;
+border-radius: 12px;
+}
+.third button:hover {
+opacity: 0.7;
+}
+.forth{
+position: relative;
+max-width: 300px;
+margin: 50px;
+text-align: center;
+font-family: arial;
+background: rgb(255, 253, 253);
+border-radius: 3px;
+width:300px;
+height: 600px;
+}
+.forth:hover img { 
+transform: scale(1.02); 
+}
+.forth:hover{
+box-shadow: 2px 6px 5px #888888;
+}
+.forth button {
+border: none;
+outline: 0;
+padding: 2px;
+color: white;
+background-color:#FF3B3F;
+text-align: center;
+cursor: pointer;
+width: 50%;
+font-size: 15px;
+border-radius: 12px;
+}
+.forth button:hover {
+opacity: 0.7;
+}
+.six{
+position: relative;
+max-width: 300px;
+margin: 50px;
+text-align: center;
+font-family: arial;
+background: rgb(255, 253, 253);
+border-radius: 3px;
+width:300px;
+height: 600px;
+}
+.six:hover{
+box-shadow: 2px 6px 5px #888888;
+}
+.six:hover img { 
+transform: scale(1.02); 
+}
+
+.six button {
+border: none;
+outline: 0;
+padding: 2px;
+color: white;
+background-color:#FF3B3F;
+text-align: center;
+cursor: pointer;
+width: 50%;
+font-size: 15px;
+border-radius: 12px;
+}
+.six button:hover {
+opacity: 0.7;
+}
+ button > a{
+   color:#eee;
+ } 
+            /* Full-width input fields */
+            input[type=text], input[type=password] {
+              width: 100%;
+              padding: 15px;
+              margin: 5px 0 22px 0;
+              display: inline-block;
+              border: none;
+              background: #f1f1f1;
+            }
+            
+            /* Add a background color when the inputs get focus */
+            input[type=text]:focus, input[type=password]:focus {
+              background-color: #ddd;
+              outline: none;
+            }
+            
+            /* Set a style for all buttons */
+            button {
+              background-color: #f02143;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              opacity: 0.9;
+            }
+            
+            button:hover {
+              opacity:1;
+            }
+            
+            /* Extra styles for the cancel button */
+            .cancelbtn {
+              padding: 14px 20px;
+              background-color: #413e3e;
+            }
+            
+            /* Float cancel and signup buttons and add an equal width */
+            .cancelbtn, .signupbtn {
+              float: left;
+              width: 50%;
+            }
+            
+            /* Add padding to container elements */
+            .container {
+              padding: 16px;
+            }
+            
+            /* The Modal (background) */
+            .modal {
+              display: none; /* Hidden by default */
+              position: fixed; /* Stay in place */
+              z-index: 1; /* Sit on top */
+              top: 19%;
+              right:5%;
+              width: 80%; /* Full width */
+              height: 100%; /* Full height */
+              overflow: auto; /* Enable scroll if needed */
+              background-color: #717174;
+              padding-top: 50px;
+            }
+            
+            /* Modal Content/Box */
+            .modal-content {
+              background-color: #acb9b9;
+              margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+              border: 1px solid rgb(51, 48, 48);
+              width: 80%; /* Could be more or less, depending on screen size */
+            }
+            
+            /* Style the horizontal ruler */
+            hr {
+              border: 1px solid #f1f1f1;
+              margin-bottom: 25px;
+            }
+             
+            /* The Close Button (x) */
+            .close {
+              position: absolute;
+              right: 35px;
+              top: 15px;
+              font-size: 40px;
+              font-weight: bold;
+              color: #f1f1f1;
+            }
+            
+            .close:hover,
+            .close:focus {
+              color: #f19b95;
+              cursor: pointer;
+            }
+            
+            /* Clear floats */
+            .clearfix::after {
+              content: "";
+              clear: both;
+              display: table;
+            }
+            
+            /* Change styles for cancel button and signup button on extra small screens */
+            @media screen and (max-width: 300px) {
+              .cancelbtn, .signupbtn {
+                 width: 100%;
+              }
+            }
+@media screen and (max-width: 768px) {
+  body{        
+padding-top: 90px;
+padding-bottom: 0px;
+}
+.line {
+  width: 30px;
+  height: 3px;
+  background: rgb(253, 253, 253);
+  margin: 0px 200px 5px 5px;
+  
+}
+.icons {
+      display: inline-block;
+  }
+.navbar {
+  position: fixed;
+}
+.hamburger {
+  position: absolute;
+  cursor: pointer;
+  right: 43%;
+  top: 50%;
+  width:7%;
+  transform: translate(-5%, -50%);
+  z-index: 2;
+}
+.nav-links {
+      position: absolute;
+      top:100%; left:0; right:0;
+      border-top: .1rem solid rgba(0,0,0,.2);
+      border-bottom: .1rem solid rgba(0,0,0,.2);
+      padding:1rem;
+      clip-path: circle(100px at 90% -20%);
+      flex-direction: column;
+      height: 85vh;
+      width: 100%;
+      background: #BC9988;
+}
+.navbar li a{
+      display: block;
+      padding:2rem;
+      margin:3rem;
+      font-size: 1.5rem;
+      
+  }
+  .navbar .search-form{
+    width:90%
+  }
+.nav-links.open {
+  clip-path: circle(1000px at 90% -10%);
+  -webkit-clip-path: circle(1000px at 90% -10%);
+  pointer-events: all;
+}
+}

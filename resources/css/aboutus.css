@@ -1,0 +1,92 @@
+/*---------About section-----------*/
+.about-us,.aboutus-page{
+    background-color: #e0ffff;
+    margin-top:10px;
+    padding:80px 0 ;
+}
+
+.about-title{
+     text-align:center;
+     padding:0 15px;
+     background:#3a5968;
+     margin-bottom:  60px ;
+     margin-left:20px;
+     width:95%;
+} 
+.about-title h2{
+   font-size:35px;
+   text-transform: capitalize;
+}
+.about-title h2::before{
+   content: attr(data-title);
+   display: block;
+   font-size: 24px;
+   color: #ffff00;
+   font-family:'Brush Script MT',cursive;
+   font-weight:100;
+   text-transform: capitalize;
+}
+.row{
+   justify-content:space-between;
+   display:flex;
+   flex-wrap: wrap;
+}
+.about-text , 
+.about-img{
+    margin:0 40px;
+    padding:0 15px;
+    float:left;
+    width:50%;
+}
+.about-text h3{
+   font-size:34px;
+   text-transform: capitalize;
+   margin-bottom: 12px;
+}
+.about-text p{
+   font-size:20px;
+   text-align: justify;
+}
+.about-text .btn{
+   margin:24px 0;
+}
+.about-img  img{
+    height:300px;
+    border-radius:12px;
+}
+.about-img .img-box{
+    position:relative;
+}
+.about-img .img-box::before{
+    content:'';
+    position:absolute;
+    height: 80px;
+    width:70px;
+    border:3px solid #3a5968;
+    left:35%;
+    top: 40%;
+    animation: spin01 7s linear infinite;
+}
+.about-img .img-box h3{
+    position:absolute;
+    left:40%;
+    top:50%;
+    width:50%;
+    max-width:250px;
+    text-align:center;
+    transform:translate(-50%,-50%);
+    font-size:30px;
+    font-family:'Brush Script MT',cursive;
+    color:#000;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+@keyframes spin01{
+    0%{
+        transform:rotate(0deg);
+
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
