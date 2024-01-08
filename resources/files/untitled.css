@@ -1,0 +1,67 @@
+*body{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	background-color: #EFEFEF;
+	font-size: 20px;
+	font-family: "Lucida Console", "Courier New", monospace;
+}
+
+a:link {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: red;
+ }
+
+a:active {
+  color: #FF3B3F;
+  }
+a{
+  text-decoration: none;
+  }
+ul, li{
+  	list-style: none;
+  }
+
+.header{
+	display: flex;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	align-items: center;
+	background-color: #BC9988;
+	height: 100px;
+    }
+
+.cart-size{
+  height: 30px;
+  width: 30px;
+  float: right;
+  margin-right: 20px;
+  margin-left: 20px;
+ }
+
+nav{
+	flex: 2;
+	}
+
+
+
+.logo-container{
+	flex: 3;
+	}
+
+.menu-items{
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	float: right;
+	width: 100%;
+	}
+
+
