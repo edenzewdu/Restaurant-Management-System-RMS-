@@ -24,7 +24,7 @@ Before running the application, ensure that the following prerequisites are met:
 
 1. Clone the repository or download the source code to your local machine.
 ```
-https://github.com/edenzewdu/Restaurant-Management-System-RMS-
+git clone https://github.com/edenzewdu/Restaurant-Management-System-RMS-
 ```
 
 2. Import the database schema located in the `database` folder into your MySQL database.
