@@ -24,12 +24,12 @@
                         <p>Table reservations</p>
                     </a>
                 </li>
-				<!--<li>
-                    <a href="#">
+				<li>
+                    <a href="contact_us.php">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Gallery</p>
+                        <p>contact_us</p>
                     </a>
-                </li>-->
+                </li>
                 
             </ul>
     	</div>
