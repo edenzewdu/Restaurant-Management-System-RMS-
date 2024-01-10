@@ -1,7 +1,9 @@
 
 <?php 
 session_start();
-include_once('includes/db.php'); ?>
+include_once('includes/db.php'); 
+require_once 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

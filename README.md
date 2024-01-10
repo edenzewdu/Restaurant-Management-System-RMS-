@@ -35,6 +35,31 @@ https://github.com/edenzewdu/Restaurant-Management-System-RMS-
 
 5. Access the application using a web browser by navigating to `http://localhost/restaurant-management-system`.
 
+## Google API Configuration
+To enable "Login with Google" functionality, you need to configure Google API authentication. Follow the instructions below:
+
+1. Go to the Google Cloud Console.
+
+2. Create a new project by clicking on the project dropdown at the top of the page and selecting "New Project". Enter a name for your project and click "Create".
+
+3. In the left sidebar, click on "APIs & Services" and then select "Credentials".
+
+4. Click on the "Create Credentials" button and choose "OAuth client ID" from the dropdown.
+
+5. Select "Web application" as the application type.
+
+6. Enter a name for the OAuth client ID, such as "Restaurant Management System".
+
+7. Add the authorized redirect URIs. For the "Login with Google" functionality, you'll need to add the URL where your application handles the Google authentication callback. It is usually http://localhost/restaurant-management-system/auth/google/callback for a local setup. Modify the URL according to your domain and application structure.
+
+8. Click on "Create" to generate the OAuth client ID and client secret.
+
+9. Copy the generated client ID and client secret, and update the configuration file of your application (config.php in this case) with the respective values.
+
+10. In your application code, implement the Google authentication flow using the Google API client library for PHP. You can find detailed documentation and code examples in the Google API PHP Client GitHub repository.
+
+11. Test the "Login with Google" functionality by registering a new account or logging in with an existing account using the Google authentication option.
+
 ## Usage
 
 - Register an account and log in to the system.
