@@ -1,7 +1,7 @@
 <?php 
 	
 	session_start();
-	require "includes/db.php";
+	require "/Restaurant_Managment_System/includes/db.php";
 	require "includes/functions.php";
     if(isset($_SESSION['isLoggedIn'])) {
         header("location: food_list.php");
