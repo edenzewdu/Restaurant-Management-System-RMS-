@@ -1,12 +1,15 @@
 <?php 
 session_start();
-include "includes/ideasforall.php" ;
-include "includes/db.php";
  
+include "includes/db.php";
 
     if(!isset($_SESSION['isLoggedIn'])) {
         header("location: includes/logout.inc.php");
+        echo "<script>alert('You need to login to reserve a table')</script>";
     }
+
+    include "includes/ideasforall.php" ;
+    
 
 $msg = "";
 	

@@ -86,17 +86,56 @@ $msg = "";
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>TABLE RESERVATION</title>
-        <link href="assets/css/bootstrap.css" rel="stylesheet" />
-        <link href="assets/css/font-awesome.css" rel="stylesheet" />
-        <link href="assets/css/custom-styles.css" rel="stylesheet" />
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    </head>
-    <body>
-        <form action='reservation.php'>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TABLE RESERVATION</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <style>
+        /* Inline CSS styles */
+        .panel-heading {
+            background-color: #337ab7;
+            color: #fff;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .reservation-box {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .personal-info,
+        .reservation-info {
+            width: 50%;
+            padding: 20px;
+        }
+
+        /* Add more inline CSS styles as needed */
+    </style>
+</head>
+<body>
+    <form action='reservation.php'>
         <div id="wrapper">
             <nav class="navbar-default navbar-side" role="navigation">
                 <div class="sidebar-collapse">
@@ -107,23 +146,23 @@ $msg = "";
                     </ul>
                 </div>
             </nav>
-            <div id="page-wrapper" >
+            <div id="page-wrapper">
                 <div id="page-inner">
                     <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="page-header">TABLE RESERVATION</h1>
+                        <div class="col-md-12 center-text">
+                            <h1 class="page-header">BOOK YOUR TABLE</h1>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5">
+                    <div class="row reservation-box">
+                        <div class="col-md-6 personal-info">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">PERSONAL INFORMATION</div>
                                 <div class="panel-body">
                                     <form action="" name="form" method="post">
                                         <div class="form-group">
                                             <label>Title*</label>
-                                            <select name="title" class="form-control" class="form-control" required >
-                                                <option value selected ></option>
+                                            <select name="title" class="form-control" required>
+                                                <option value selected></option>
                                                 <option value="Miss.">Miss.</option>
                                                 <option value="Mr.">Mr.</option>
                                                 <option value="Mrs.">Mrs.</option>
@@ -143,29 +182,28 @@ $msg = "";
                                         </div>
                                         <div class="form-group">
                                             <label>Phone Number</label>
-                                            <input name="phone" type ="text" class="form-control" required>
+                                            <input name="phone" type="text" class="form-control" required>
                                         </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">RESERVATION INFORMATION</div>
-                                    <div class="panel-body">
-                                        <div class="form-group">
+                        <div class="col-md-6 reservation-info">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">RESERVATION INFORMATION</div>
+                                <div class="panel-body">
+                                    <div class="form-group">
                                         <label>No of Guest</label>
-					                    <input type="number" placeholder="How many guests" min="1" name="guest" id="guest" class="form-control" required>
-					                    </div>
-                                        <div class="form-group">
-                                            <label>Time</label>
-                                            <input name="time" type ="time" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Date</label>
-                                            <input name="date" type ="date" class="form-control">
-                                            
-                                        </div>
+                                        <input type="number" placeholder="How many guests" min="1" name="guest" id="guest" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Time</label>
+                                        <input name="time" type="time" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Date</label>
+                                        <input name="date" type="date" class="form-control">
+                                    </div>
                                         <div class="form_group">
 					
                                             <label>Suggestions <small><b>(E.g No of Plates, How you want the setup to be)</b></small></label><br/>

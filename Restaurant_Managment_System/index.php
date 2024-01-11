@@ -3,6 +3,14 @@
 session_start();
 include_once('includes/db.php'); 
 require_once 'config.php';
+
+// authenticate code from Google OAuth Flow
+if (isset($_GET['code'])) {
+  // save user data into session
+  $_SESSION['isLoggedIn'] = 1;
+  header("Location: index.php?login=success");
+                        exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,38 +27,43 @@ require_once 'config.php';
            <script src="https://kit.fontawesome.com/4a085e9b53.js" crossorigin="anonymous"></script>
            <script src="../../resources/js/main.js" async></script>
            <title>Sen'q Restaurant</title>
+    <style>
+    .add .signup:hover,
+    .add .login:hover,
+    .add .logout:hover {
+        background-color: #5d99c6;
+        color: #fff;
+    }
+</style>
 </head>
 <body>
-    <!--Header starts-->
-    <div class="add">      
-                <div class="add-btn">
-                    
-                </div> 
-                   
-                   <?php 
-                        
-                        if(isset($_SESSION['isLoggedIn'])){ 
-                        echo "<form action='includes/logout.inc.php' method='post'>
-                        <button type='submit' name='logout-submit' >Log out</button> 
-                        </form>";
-                        }
-                        
-                        elseif (!isset($_SESSION['isLoggedIn'])) { 
-                        echo"<a href='sign up.php'><button type='submit' name='signup-submit'>Sign up</button></a>
-                            <a href='login.php'><button type='submit' name='login-submit' >Log in</button></a>" ;
-                        
-                        } ?>
-                  
-                
-              
-    </div>
+<!--Header starts-->
+<div class="add" style="position: relative; background-color: #3a5968; padding: 10px;">
+    <div class="add-btn"></div>
+    <span class="name" style="position: relative;">
+    <img src="../resources/images/logo.png" alt="logo" style="width: 80px; height: auto; position: absolute; top: 0; z-index: 9999;">
+</span>
+    <?php if (isset($_SESSION['isLoggedIn'])) : ?>
+        <form action='includes/logout.inc.php' method='post' style="display: flex; align-items: center; justify-content: flex-end;">
+            <button type='submit' style='margin-left: 10px; padding: 8px 16px; background-color: #fff; color: #5d99c6; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;' class='logout' name='logout-submit'>Log out</button>
+        </form>
+    <?php elseif (!isset($_SESSION['isLoggedIn'])) : ?>
+        <div style="display: flex; align-items: center; justify-content: flex-end;">
+            <a href='sign up.php' style='text-decoration: none;'>
+                <button class='signup' type='submit' name='signup-submit' style='margin-left: 10px; padding: 8px 16px; background-color: #fff; color: #5d99c6; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;'>Sign up</button>
+            </a>
+            <a href='login.php' style='text-decoration: none;'>
+                <button class='login' type='submit' name='login-submit' style='margin-left: 10px; padding: 8px 16px; background-color: #fff; color: #5d99c6; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;'>Log in</button>
+            </a>
+        </div>
+    <?php endif; ?>
+</div>
+
     <header class="header">
        
         <!--Nav begins-->
         <nav>
-            <span class="name">SEN'Q
-                <img src="../..//resources/images/snk2.jpg" alt="logo"> 
-            </span>
+       
            
             
             <div class="nav-links"  id="navLink">
@@ -73,25 +86,21 @@ require_once 'config.php';
                 </ul>
             </div>
             <section class="food-search text-center">
-                <div class="container">
-                
-                    <form action="includes/food-search.php" method="POST">
-                        <input type="search" name="search" placeholder="Search Food by name or price" required>
-                        <input type="submit" name="submit" value="Search" class="btn btn-primary">
-                    </form>
-
-                </div>
-            </section>
+            <div class="container">
+                <form action="includes/food-search.php" method="POST">
+                    <input type="search" name="search" placeholder="Food Name or Price" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <input type="submit" name="submit" value="Search" class="btn btn-primary" style="padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                </form>
+            </div>
+        </section>
            
              <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
         <div class="title">
             <h1>SEN'Q RESTAURANT</h1>
             <p>"When you think of food, think of Ethiopian food."</p>
-            <?php
-               echo  '<a href="menu.php" class="btn hero-btn">';
-            ?>
-            ORDER NOW</a>
+            <?php echo '<a href="menu.php" class="btn hero-btn" style="padding: 10px 20px; background-color: #333; color: #fff; text-decoration: none; border-radius: 5px; cursor: pointer;">'; ?>
+        ORDER NOW</a>
     <!--Nav ends-->
 </header>
 <!--Header ends-->
@@ -151,9 +160,9 @@ require_once 'config.php';
 </section>
 <!--Menu ends-->
 <!--About us starts-->
-<section class="about-us sec-padding" id="about">
+<section class="about-us sec-padding" id="about" style="background-color: #3a5968">
     <div class="row">
-        <div class="about-title">
+        <div class="about-title" style="background-color: #202e43">
             <h2 data-title="our story">About us</h2>
         </div>
     </div>
