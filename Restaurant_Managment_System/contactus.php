@@ -1,4 +1,4 @@
-﻿ <?php
+﻿<?php
  session_start();
   //include "includes/contact.inc.php"; 
   //require 'db.php';
