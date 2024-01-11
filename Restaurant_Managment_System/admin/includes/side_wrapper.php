@@ -12,6 +12,12 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                <li >
+                    <a href="food_list.php">
+                        <i class="pe-7s-note2"></i>
+                        <p>FOOD LIST</p>
+                    </a>
+                </li>
                 <li>
                     <a href="food_add.php">
                         <i class="pe-7s-note"></i>
@@ -24,12 +30,18 @@
                         <p>Table reservations</p>
                     </a>
                 </li>
-				<!--<li>
-                    <a href="#">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Gallery</p>
+                <li>
+                    <a href="user_list.php">
+                        <i class="pe-7s-note"></i>
+                        <p>User List</p>
                     </a>
-                </li>-->
+                </li>
+				<li>
+                    <a href="contact_us.php">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>contact_us</p>
+                    </a>
+                </li>
                 
             </ul>
     	</div>
