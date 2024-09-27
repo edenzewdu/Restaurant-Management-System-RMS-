@@ -1,117 +1,164 @@
-<?php 
-	
-	session_start();
-	//require "includes/functions.php";
-	require "../includes/db.php";
-	if(!isset($_SESSION['adminLoggedIn'])) {
-        header("location: ../includes/logout.inc.php");
-    }
-	
-	$result = "";
-	$pagenum = "";
-	$per_page = 20;
-		
-		$count = $conn->query("SELECT * FROM reservation");
-		
-		$pages = ceil((mysqli_num_rows($count)) / $per_page);
-		
-		if(isset($_GET['page'])) {
-			
-			$page = $_GET['page'];
-			
-		}else{
-			
-			$page = 1;
-			
-		}
-						
-		$start = ($page - 1) * $per_page;
-		
-		$reserve = $conn->query("SELECT * FROM reservation LIMIT $start, $per_page");
-		
-		if($reserve->num_rows) {
-			
-			$result = "<table class='table table-hover'>
-						<thead>
-							<th>S/N</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>No of Guests</th>
-							<th>Email</th>
-							<th>Phone</th>
-							<th>Date</th>
-							<th>Time</th>
-							<th>Suggestions</th>
-							<th>Action</th>
-						</thead>
-						<tbody>";
-			
-			$x = 1;
-			
-			while($row = $reserve->fetch_assoc()) {
-				
-				$reserve_id = $row['reserve_id'];
-				$no_of_guest = $row['guest'];
-				$lname = $row['lname'];
-				$fname = $row['fname'];
-				$email = $row['email'];
-				$phone = $row['phone'];
-				$date_res = $row['date_res'];
-				$time = $row['time'];
-				$suggestions = $row['suggestions'];
-				
-				
-				$result .=  "<tr>
-								<td>$x</td>
-								<td>$lname</td>
-								<td>$fname</td>
-								<td>$no_of_guest</td>
-								<td>$email</td>
-								<td>$phone</td>
-								<td>$date_res</td>
-								<td>$time</td>
-								<td>$suggestions</td>
-								<td><a href='reservations.php?delete=".$reserve_id."' onclick='return check();'><i class='pe-7s-close-circle'></i></a></td>
-							</tr>";
-																
-									
-				$x++;
-			}
-			
-			$result .= "</tbody>
-						</table>";
-			
-		}else{
-			
-			$result = "<p style='color:red; padding: 10px; background: #ffeeee;'>No Table reservations available yet</p>";
-			
-		}
-	
-	if(isset($_GET['delete'])) {
-		
-		$delete = preg_replace("#[^0-9]#", "", $_GET['delete']);
-		
-		if($delete != "") {
-			
-			$sql = $conn->query("DELETE FROM reservation WHERE reserve_id='".$delete."'");
-		
-			if($sql) {
-				
-				echo "<script>alert('Successfully deleted')</script>";
-				
-			}else{
-				
-				echo "<script>alert('Operation Unsuccessful. Please try again')</script>";
-				
-			}
-			
-		}
-		
-		
-	}
-	
-?>
+<?php
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
+// Load Composer's autoloader
+require '../vendor/autoload.php';
+session_start();
+// require "includes/functions.php";
+require "../includes/db.php";
+if (!isset($_SESSION['adminLoggedIn'])) {
+    header("location: ../includes/logout.inc.php");
+    exit; // Add exit to prevent further execution
+}
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$result = "";
+$pagenum = "";
+$per_page = 20;
+
+$count = $conn->query("SELECT * FROM reservation");
+
+$pages = ceil((mysqli_num_rows($count)) / $per_page);
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+
+$start = ($page - 1) * $per_page;
+
+$reserve = $conn->query("SELECT * FROM reservation LIMIT $start, $per_page");
+
+if ($reserve->num_rows > 0) {
+    $result = "<table class='table table-hover'>
+                <thead>
+                    <th>S/N</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>No of Guests</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Suggestions</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>";
+
+    $x = 1;
+
+    while ($row = $reserve->fetch_assoc()) {
+        $reserve_id = $row['reserve_id'];
+        $no_of_guest = $row['guest'];
+        $fname = $row['fname'];
+        $lname = $row['lname'];
+        $email = $row['email'];
+        $phone = $row['phone'];
+        $date_res = $row['date_res'];
+        $time = $row['time'];
+        $suggestions = $row['suggestions'];
+
+        $result .=  "<tr>
+                        <td>$x</td>
+                        <td>$fname</td> 
+                        <td>$lname</td>
+                        <td>$no_of_guest</td>
+                        <td>$email</td>
+                        <td>$phone</td>
+                        <td>$date_res</td>
+                        <td>$time</td>
+                        <td>$suggestions</td>
+                        <td>
+                            <a href=\"?approve=" . $row['reserve_id'] . "\">Approve</a>
+                            <a href=\"?reject=" . $row['reserve_id'] . "\">Reject</a>
+						</td>
+                    </tr>";
+
+        $x++;
+    }
+
+    $result .= "</tbody>
+                </table>";
+} else {
+    $result = "<p style='color:red; padding: 10px; background: #ffeeee;'>No Table reservations available yet</p>";
+}
+
+// Approve action
+if (isset($_GET['approve'])) {
+    $approve = preg_replace("#[^0-9]#", "", $_GET['approve']);
+    if ($approve != "") {
+        $sql = $conn->query("UPDATE reservation SET status='Approved' WHERE reserve_id='" . $approve . "'");
+        if ($sql) {
+            // Fetch the reservation details
+            $reservationDetails = $conn->query("SELECT * FROM reservation WHERE reserve_id='" . $approve . "'");
+            if ($reservationDetails->num_rows > 0) {
+                $row = $reservationDetails->fetch_assoc();
+                $lname = $row['lname'];
+                $email = $row['email'];
+
+                // Send an email to the user
+                require "mail.php";
+                sendReservationApprovalEmail($email, $lname);
+
+                echo "<script>alert('Successfully approved')</script>";
+            } else {
+                echo "<script>alert('Operation Unsuccessful. Please try again')</script>";
+            }
+        }
+    }
+}
+
+// Reject action
+if (isset($_GET['reject'])) {
+	echo "
+		<div id='rejectModal' class='modal'>
+			<div class='modal-content'>
+				<span class='close'>&times;</span>
+				<form method='get' action=''>
+					<input type='text' name='reject' id='rejectId'>
+					<label for='reason'>Reason:</label>
+					<textarea name='reason' id='reason' rows='4' cols='50' required></textarea>
+					<input type='submit' value='Reject Reservation'>
+				</form>
+			</div>
+		</div>";
+	
+    $reject = preg_replace("#[^0-9]#", "", $_GET['reject']);
+    $reason = preg_replace("#[^0-9]#", "", $_GET['reason']);
+	
+
+	if ($reject != "") {
+    // Update the reservation status to "Rejected" and save the rejection reason
+    $sql = $conn->query("UPDATE reservation SET status='Rejected' WHERE reserve_id='" . $reject . "'");
+    if ($sql) {
+        // Fetch the reservation details
+        $reservationDetails = $conn->query("SELECT * FROM reservation WHERE reserve_id='" . $reject . "'");
+        if ($reservationDetails > 0) {
+                $row = $reservationDetails->fetch_assoc();
+                $lname = $row['lname'];
+                $email = $row['email'];
+
+                // Send an email to the user
+                require "mail.php";
+                sendReservationRejectionEmail($email, $lname, $reason);
+
+                echo "<script>alert('Reservation rejected and email sent.')</script>";
+            } else {
+                echo "<script>alert('Operation Unsuccessful. Please try again.')</script>";
+            }
+        }
+	}
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -145,15 +192,6 @@
 	
     <link href="assets/css/style.css" rel="stylesheet" />
 	
-	<script>
-	
-		function check() {
-			
-			return confirm("Are you sure you want to delete this record");
-			
-		}
-		
-	</script>
 	
 </head>
 <body>
@@ -204,6 +242,16 @@
                                 
 								<?php echo $result; ?>
 
+    <!-- Pagination links -->
+    <?php
+    if ($pages >= 1 && $page <= $pages) {
+        for ($x = 1; $x <= $pages; $x++) {
+            echo ($x == $page) ? "<a href='?page=$x'><strong>$x</strong></a> " : "<a href='?page=$x'>$x</a> ";
+        }
+    }
+    
+	
+	?>
                             </div>
                         </div>
                     </div>                    
@@ -247,6 +295,13 @@
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
+	<script>
+        // Disable button links after rejection or approval
+        var buttons = document.getElementsByTagName('button');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].disabled = true;
+        }
+    </script>
 	
 	
 

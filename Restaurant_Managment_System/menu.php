@@ -101,10 +101,11 @@
 
 <body>
 
+<a href="#breakfast">Breakfast</a> | <a href="#lunch">Lunch</a> | <a href="#snack">Snack</a> | <a href="#beverage">Beverage</a>
 <div class="breakfast">
    
     <div class="sub-title">
-        <h3><span>Breakfast </span> Menu</h3>
+        <h3 id="breakfast"><span>Breakfast </span> Menu</h3>
     </div>
     <div class="all-menu">
 			<?php echo ($bfast == "") ? "<h3 style=' text-align: center; font-weight: lighter; padding: 10px 0px; background: #ffeeee; color: #333;'>Your shopping basket is empty</h3>" : $bfast; ?>
@@ -115,7 +116,7 @@
 <!-----Lunch and snack starts------------------>
 <div class="lunchsnack">
     <div class="sub-title">
-        <h3><span>Lunch </span> Menu</h3>
+        <h3 id="lunch"><span>Lunch </span> Menu</h3>
     </div>
     <div class="all-menu">
 				<?php echo ($lunch == "") ? "<h3 style=' text-align: center; font-weight: lighter; padding: 10px 0px; background: #ffeeee; color: #333;'>Your shopping basket is empty</h3>" : $lunch; ?>
@@ -131,7 +132,7 @@
 
 <div class="snack">
     <div class="sub-title">
-        <h3><span>Snack </span> menu</h3>
+        <h3 id="snack"><span>Snack </span> menu</h3>
     </div>
     <div class="all-menu">
 			<?php echo ($snack == "") ? "<h3 style=' text-align: center; font-weight: lighter; padding: 10px 0px; background: #ffeeee; color: #333;'>Your shopping basket is empty</h3>" : $snack; ?>
@@ -144,7 +145,7 @@
 <!-------------------Beverage menu starts-------------------->
 <div class="beverage">
     <div class="sub-title">
-        <h3><span>Beverage </span> Menu</h3>
+        <h3 id="beverage"><span>Beverage </span> Menu</h3>
     </div>
     <div class="all-menu">
         

@@ -104,7 +104,7 @@
                 <div class="container">
                 
                     <form action="includes/food-search.php" method="POST">
-                        <input type="search" name="search" placeholder="Search for Food.." required>
+                        <input type="search" name="search" placeholder="Food Name or Price" required>
                         <input type="submit" name="submit" value="Search" class="btn btn-primary">
                     </form>
 
